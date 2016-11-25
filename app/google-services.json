@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "173754857691",
+    "firebase_url": "https://dustbin-cleaner.firebaseio.com",
+    "project_id": "dustbin-cleaner",
+    "storage_bucket": "dustbin-cleaner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173754857691:android:94a6354257d6b485",
+        "android_client_info": {
+          "package_name": "com.dustbincleaner.dustbincleaner.Activity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173754857691-09a1ehar3pfmjtq16bcpavc990ro09pg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjwYNPw7WFuVCkRg63Y-4TlNNnFX_JWD0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173754857691:android:735b9acfbd6478cc",
+        "android_client_info": {
+          "package_name": "com.dustbincleaner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173754857691-09a1ehar3pfmjtq16bcpavc990ro09pg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjwYNPw7WFuVCkRg63Y-4TlNNnFX_JWD0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,14 +15,16 @@ public class DisplayDustbinAdapter extends BaseAdapter {
 
 
     private ArrayList<String> dustbinList;
+    private ArrayList<String> dustbinName;
     LayoutInflater inflater;
     private Context activity;
 
 
-    public DisplayDustbinAdapter(Context a, ArrayList<String> dustbinList) {
+    public DisplayDustbinAdapter(Context a, ArrayList<String> dustbinList,ArrayList<String> dustbinName) {
         activity = a;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.dustbinList = dustbinList;
+        this.dustbinName = dustbinName;
     }
 
     @Override
@@ -49,12 +51,14 @@ public class DisplayDustbinAdapter extends BaseAdapter {
 
 
         TextView tv = (TextView) vi.findViewById(R.id.tv);
+        TextView bv = (TextView) vi.findViewById(R.id.bv);
         ProgressBar pb = (ProgressBar) vi.findViewById(R.id.pb);
 
         int data = Integer.parseInt(dustbinList.get(position)) * 10;
 
         pb.setProgress(data);
         tv.setText(dustbinList.get(position) + "0% Dustbin filled");
+        bv.setText(dustbinName.get(position));
 
 
 

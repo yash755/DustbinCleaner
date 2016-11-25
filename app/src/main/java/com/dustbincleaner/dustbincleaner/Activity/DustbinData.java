@@ -11,9 +11,6 @@ import com.dustbincleaner.dustbincleaner.Adapter.AllocateListAdapter;
 import com.dustbincleaner.dustbincleaner.Adapter.DisplayDustbinAdapter;
 import com.dustbincleaner.dustbincleaner.Interface.GetResult;
 import com.dustbincleaner.dustbincleaner.Util.Util;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +21,7 @@ public class DustbinData extends AppCompatActivity {
 
 
     ArrayList<String> dustbindata = new ArrayList<String>();
+    ArrayList<String> dustbinname = new ArrayList<String>();
     ListView li;
     DisplayDustbinAdapter displayDustbinAdapter;
 
@@ -46,6 +44,7 @@ public class DustbinData extends AppCompatActivity {
                     try {
                         String data = jsonObject.getString("bin" + j);
                         dustbindata.add(data);
+                        dustbinname.add("BIN  " + j);
                         j++;
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -53,7 +52,7 @@ public class DustbinData extends AppCompatActivity {
                 }
 
                 li = (ListView) findViewById(R.id.dusdata);
-                displayDustbinAdapter = new DisplayDustbinAdapter(getApplicationContext(),dustbindata);
+                displayDustbinAdapter = new DisplayDustbinAdapter(getApplicationContext(),dustbindata,dustbinname);
                 li.setAdapter(displayDustbinAdapter);
 
                 }

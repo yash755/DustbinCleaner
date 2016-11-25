@@ -9,7 +9,19 @@
         android:background="#F0F1F2">
 
         <TextView
+            android:id="@+id/bv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#676a6b"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:hint="BIN 1"
+            android:textAlignment="center" />
+
+        <TextView
             android:id="@+id/tv"
+            android:layout_below="@+id/bv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"

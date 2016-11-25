@@ -10,9 +10,7 @@ import com.dustbincleaner.dustbincleaner.Adapter.DisplayDustbinAdapter;
 import com.dustbincleaner.dustbincleaner.Interface.GetJsonArrayReesult;
 import com.dustbincleaner.dustbincleaner.Interface.GetResult;
 import com.dustbincleaner.dustbincleaner.Util.Util;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +22,7 @@ public class Cleaner extends AppCompatActivity {
 
     ArrayList<String> dustbindata = new ArrayList<String>();
     ArrayList<String> binlist = new ArrayList<String>();
+    ArrayList<String> dustbinname = new ArrayList<String>();
     ListView li;
     DisplayDustbinAdapter displayDustbinAdapter;
 
@@ -65,8 +64,10 @@ public class Cleaner extends AppCompatActivity {
                             String ids = json.getString("cleanerid");
                             String dustbin  = json.getString("dustbin");
 
-                            if(ids.equals(id))
-                               binlist.add(dustbin);
+                            if(ids.equals(id)) {
+                                binlist.add(dustbin);
+                                FirebaseMessaging.getInstance().subscribeToTopic(dustbin);
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -90,13 +91,14 @@ public class Cleaner extends AppCompatActivity {
                     try {
                         String data = jsonObject.getString(binlist.get(i));
                         dustbindata.add(data);
+                        dustbinname.add(binlist.get(i));
                     }catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
 
                 li = (ListView) findViewById(R.id.cleanerdata);
-                displayDustbinAdapter = new DisplayDustbinAdapter(getApplicationContext(),dustbindata);
+                displayDustbinAdapter = new DisplayDustbinAdapter(getApplicationContext(),dustbindata,dustbinname);
                 li.setAdapter(displayDustbinAdapter);
 
             }

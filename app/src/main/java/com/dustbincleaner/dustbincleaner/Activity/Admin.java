@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import com.dustbincleaner.R;
 import com.dustbincleaner.dustbincleaner.SharedPrefrence.UserLocalStore;
 import com.dustbincleaner.dustbincleaner.Util.Util;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class Admin extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +31,11 @@ public class Admin extends AppCompatActivity implements View.OnClickListener {
         addcleaner.setOnClickListener(this);
         allocatedustbin.setOnClickListener(this);
         dustbindta.setOnClickListener(this);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("bin1");
+        FirebaseMessaging.getInstance().subscribeToTopic("bin2");
+        FirebaseMessaging.getInstance().subscribeToTopic("bin3");
+        FirebaseMessaging.getInstance().subscribeToTopic("bin4");
 
     }
 
