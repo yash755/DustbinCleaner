@@ -74,7 +74,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         UserLocalStore userLocalStore = new UserLocalStore(this);
         String data = userLocalStore.getStatus();
 
-        if(data.equals("admin"))
+        if(data.equals("admin") && messageBody.toLowerCase().contains("100"))
         {
             Intent intent = new Intent(this, DustbinData.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

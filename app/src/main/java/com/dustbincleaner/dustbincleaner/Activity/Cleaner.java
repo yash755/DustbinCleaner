@@ -1,14 +1,19 @@
 package com.dustbincleaner.dustbincleaner.Activity;
 
 
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.dustbincleaner.R;
 import com.dustbincleaner.dustbincleaner.Adapter.DisplayDustbinAdapter;
 import com.dustbincleaner.dustbincleaner.Interface.GetJsonArrayReesult;
 import com.dustbincleaner.dustbincleaner.Interface.GetResult;
+import com.dustbincleaner.dustbincleaner.SharedPrefrence.UserLocalStore;
 import com.dustbincleaner.dustbincleaner.Util.Util;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -30,6 +35,36 @@ public class Cleaner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cleaner);
+
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.cleaner_action_bar);
+        View view =getSupportActionBar().getCustomView();
+
+        ImageButton imageButton= (ImageButton)view.findViewById(R.id.logout);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
+                userLocalStore.clearUserdata();
+                Intent in = new Intent(getApplicationContext(), Splash.class);
+                startActivity(in);
+            }
+        });
+
+        ImageButton imageButton1= (ImageButton)view.findViewById(R.id.refresh);
+
+        imageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dustbindata.clear();
+                dustbinname.clear();
+                binlist.clear();
+                getcleanerid();
+            }
+        });
 
 
         getcleanerid();

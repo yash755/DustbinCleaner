@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:paddingTop="5dp"
+    >
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Admin"
+            android:gravity="left"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_power_settings"
+            android:id="@+id/logout"
+            android:paddingTop="7dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" />
+
+
+    </TableRow>
+
+</TableLayout>

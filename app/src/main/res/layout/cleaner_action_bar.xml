@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:paddingTop="5dp"
+    >
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Cleaner"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_cached"
+            android:id="@+id/refresh"
+            android:paddingTop="7dp"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="7dp"
+            android:src="@drawable/ic_power_settings"
+            android:id="@+id/logout"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent" />
+
+
+    </TableRow>
+
+</TableLayout>

@@ -111,6 +111,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         }else{
 
                             new Util().showerrormessage(Login.this,"Either wrong ID or password !!!!");
+                            userLocalStore = new UserLocalStore(getApplicationContext());
+                            userLocalStore.clearUserdata();
                         }
 
 
