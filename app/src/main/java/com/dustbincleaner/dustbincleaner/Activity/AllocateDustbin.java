@@ -10,6 +10,7 @@ import com.dustbincleaner.dustbincleaner.Interface.GetJsonArrayReesult;
 import com.dustbincleaner.dustbincleaner.Interface.GetResult;
 import com.dustbincleaner.dustbincleaner.Object.CleanerList;
 import com.dustbincleaner.dustbincleaner.Util.Util;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +23,7 @@ public class AllocateDustbin extends AppCompatActivity {
 
     ArrayList<CleanerList> cleanerList = new ArrayList<>();
     ArrayList<String> dustbinlist = new ArrayList<String>();
+    ArrayList<String> allocatedlist = new ArrayList<String>();
     ListView li;
     AllocateListAdapter allocateListAdapter;
 
@@ -36,11 +38,39 @@ public class AllocateDustbin extends AppCompatActivity {
         dustbinlist.add("bin3");
         dustbinlist.add("bin4");
 
-        getcleanerlist();
+        getallocateddustbin();
+
+
 
 
     }
 
+
+    void getallocateddustbin(){
+
+        new Util().getallocateddustbin(this, new GetJsonArrayReesult() {
+
+            @Override
+            public void done(JSONArray jsonArray) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    try {
+                        JSONObject json = jsonArray.getJSONObject(i);
+                        String ids = json.getString("cleanerid");
+                        allocatedlist.add(ids);
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                getcleanerlist();
+            }
+
+        });
+
+
+    }
 
     void getcleanerlist(){
 
@@ -62,7 +92,7 @@ public class AllocateDustbin extends AppCompatActivity {
                 }
 
                 li = (ListView) findViewById(R.id.dustbinlist);
-                allocateListAdapter = new AllocateListAdapter(getApplicationContext(),dustbinlist,cleanerList);
+                allocateListAdapter = new AllocateListAdapter(getApplicationContext(),dustbinlist,cleanerList,allocatedlist);
                 li.setAdapter(allocateListAdapter);
 
 

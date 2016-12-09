@@ -34,15 +34,18 @@ public class AllocateListAdapter extends BaseAdapter {
 
     private ArrayList<CleanerList> cleanerList;
     private ArrayList<String> dustbinList;
+    private ArrayList<String> allocatedlist;
     LayoutInflater inflater;
     private Context activity;
+    int currentpos = 0;
 
 
-    public AllocateListAdapter(Context a, ArrayList<String> dustbinList,ArrayList<CleanerList> cleanerList) {
+    public AllocateListAdapter(Context a, ArrayList<String> dustbinList,ArrayList<CleanerList> cleanerList,ArrayList<String> allocatedlist) {
         activity = a;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.dustbinList = dustbinList;
         this.cleanerList = cleanerList;
+        this.allocatedlist =allocatedlist;
     }
 
     @Override
@@ -89,6 +92,17 @@ public class AllocateListAdapter extends BaseAdapter {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_dropdown_item, cleanerArray);
         dropdown.setAdapter(adapter);
 
+        for (int i=0; i<cleanerList.size(); i++) {
+
+            if(allocatedlist.get(position).equals(cleanerList.get(i).id)){
+                dropdown.setSelection(i+1);
+                currentpos = i+1;
+                break;
+            }
+
+        }
+
+
         final String dus= dustbinList.get(position);
 
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -98,7 +112,7 @@ public class AllocateListAdapter extends BaseAdapter {
 
                 int pos = dropdown.getSelectedItemPosition();
 
-                if(pos != 0) {
+                if(pos != 0 && pos != currentpos) {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("dustbin", dus);
                     params.put("cleanerid", cleanerList.get(pos-1).id);
