@@ -81,7 +81,7 @@ public class AddCleaner extends AppCompatActivity implements View.OnClickListene
         Map<String, String> params = new HashMap<String, String>();
         params.put("name", name);
         params.put("username", usernames);
-        params.put("password", usernames);
+        params.put("password", password);
         params.put("type","1");
 
 
